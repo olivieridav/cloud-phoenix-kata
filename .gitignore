@@ -113,3 +113,7 @@ typings/
 
 # next.js build output
 .next
+
+.terraform
+.terraform.lock.hcl
+plan.out

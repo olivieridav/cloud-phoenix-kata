@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - yum install -y jq
+  build:
+    commands:
+      - DEPLOYED_IMAGE_TAG=$(jq -j  .[0].imageUri imagedefinitions.json  | sed 's/^.*://')
+      - aws ssm put-parameter --name $SSM_PARAMETER_NAME --value $DEPLOYED_IMAGE_TAG --overwrite
+
+
