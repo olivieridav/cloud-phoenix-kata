@@ -30,3 +30,8 @@ output "BACKUP_SSM_COMMAND" {
   value = module.infra_ec2.backup_ssm_command
 }
 
+output "MONGO_DB_INSTANCE_ID" {
+  value = module.infra_ec2.db_instance_id
+}
+
+

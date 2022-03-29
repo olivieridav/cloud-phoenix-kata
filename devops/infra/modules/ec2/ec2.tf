@@ -2,6 +2,10 @@ output "db_private_ip" {
   value = aws_instance.phoenix_db.private_ip
 }
 
+output "db_instance_id" {
+  value = aws_instance.phoenix_db.id
+}
+
 
 resource "aws_key_pair" "phoenix_key" {
   key_name   = "phoenix-key-${var.envir}"

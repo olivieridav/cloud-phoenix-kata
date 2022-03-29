@@ -17,6 +17,7 @@ The following infrastructure components will be created:
 - AWS credentials with administrator permissions in the target account
 - A GitHub account with permissions to clone the repository
 - Familiarity with AWS
+- This solution uses "ECS Container Insights", which is not available in all AWS regions. Kindly refer to [this](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html) documentation article for a list of enabled regions.
 
 ## Usage
 
@@ -111,6 +112,7 @@ To delete the environment navigate to the `devop/infra/prod` folder and run the 
 | ENVIRONMENT | Friendly name of the deployed environment |
 | GIT_BRANCH_RELEASED | The branch released by the ci/cd pipeline |
 | LOAD_BALANCER_FQDN | Load balancer public fqdn |
+| MONGO_DB_INSTANCE_ID | The ec2 instance id of the mongodb database | 
 | MONGO_DB_IP | IP of the mongodb database instance |
 | PIPELINE_NAME | Name of the codebuild ci/cd pipeline |
 
@@ -126,3 +128,6 @@ To delete the environment navigate to the `devop/infra/prod` folder and run the 
 
 - ECS will spawn a new container in case of an application crash.
 
+- The mongodb instance does not have a public ip, however it is possible to open an interactive bash session with [SSM](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console). 
+
+- To start the CI/CD pipeline manually or check build/deploy errors you can use the Codepipeline console. Check *terraform apply* Outpus to get the name of the pipeline.  
